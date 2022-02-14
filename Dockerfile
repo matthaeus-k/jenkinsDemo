@@ -5,7 +5,7 @@ ENV PATH $CATALINA_HOME/bin:$PATH
 ENV NODE_HOME /opt/node
 ENV NODE_V=14.19.0
 
-WORKDIR $CATALINA_HOME
+
 
 RUN mkdir -p "$CATALINA_HOME"
 RUN mkdir -p "$NODE_HOME"
@@ -20,7 +20,7 @@ RUN wget -O "$NODE_V".tar.gz https://nodejs.org/download/release/latest-v14.x/no
 RUN tar -xzvf "$NODE_V".tar.gz -C /opt/node --strip-components 0
 RUN ln -s "$NOD_HOME"/node-v14.19.0-linux-arm64 "$NODE_HOME"/"$NODE_V"
 ENV PATH  $NOD_HOME/$NODE_V/bin:$PATH
-
+WORKDIR $CATALINA_HOME/9.0.58
 
 EXPOSE 8080
 CMD ["./bin/catalina.sh", "run"]
